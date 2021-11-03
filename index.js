@@ -3,20 +3,34 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
+app.use(express.json());
 app.use(cors());
 
-app.get('/', function (req, res) {
-  res.send('Please visit /notes and do not panic.')
-})
+let notes = [];
 
 app.get('/notes', function (req, res) {
-  res.send('Hello, world')
+  res.send(JSON.stringify(notes))
 })
 
+// app.get('/notes', function (req, res) {
+//   res.send('Hello, world')
+// })
+
 app.post('/notes', function (req, res) {
-  res.send('Post method of some sort')
+  const newNote = {
+    title: req.body.title,
+    content: req.body.content
+  };
+  notes.push(newNote);
+  res.send(JSON.stringify(newNote))
 })
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+
+
+
+
+
+
