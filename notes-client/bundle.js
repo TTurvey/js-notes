@@ -6,6 +6,7 @@
     });
   };
   fetchNote().then((data) => {
-    document.querySelector("#note").innerText = data.notes;
+    document.querySelector("#note-title").innerText = data[0].title;
+    document.querySelector("#note-content").innerText = data[0].content;
   });
 })();

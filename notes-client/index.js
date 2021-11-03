@@ -8,5 +8,6 @@ const fetchNote = () => {
 }
 
 fetchNote().then(data => {
-  document.querySelector('p').innerText = data.notes;
+  document.querySelector('#note-title').innerText = data[0].title;
+  document.querySelector('#note-content').innerText = data[0].content;
 })
